@@ -1,23 +1,18 @@
 <?php
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Kolibo_Model_Abstract
  * @package Kolibo
  * @category Kolibo_Model
- * @author $Author: Akido $
+ * @author $Author: Akido$
  * @version $Id: Abstract.php 41 2011-02-16 02:29:01Z Akido $
  *
  * #### properties to be defined ####
- * @var protected $_className = Model Classname
+ * @var protected $_tableClass = Model Classname
  *
  */
 abstract class Kolibo_Model_Abstract
 {
-    protected $_className = null;
+    protected $_tableClass = null;
 
     public function __construct(array $options = null)
     {
@@ -31,7 +26,7 @@ abstract class Kolibo_Model_Abstract
     public function __set($name, $value)
     {
         $var = '_'.$name;
-        $classVars = get_class_vars($this->_className);
+        $classVars = get_class_vars($this->_tableClass);
 
         if(array_key_exists($var, $classVars)){
             $this->$var = $value;
@@ -44,7 +39,7 @@ abstract class Kolibo_Model_Abstract
     public function __get($name)
     {
         $var = '_'.$name;
-        $classVars = get_class_vars($this->_className);
+        $classVars = get_class_vars($this->_tableClass);
         if(array_key_exists($var, $classVars)){
             return $this->$var;
         } else {
@@ -54,13 +49,13 @@ abstract class Kolibo_Model_Abstract
 
     public function getClassVars()
     {
-	$vars = get_class_vars($this->_className);
+	$vars = get_class_vars($this->_tableClass);
 	return $vars;
     }
 
     public function setOptions(array $options)
     {
-        $classVars = get_class_vars($this->_className);
+        $classVars = get_class_vars($this->_tableClass);
         foreach ($options as $key => $value) {
             $var = '_'.$key;
             if (array_key_exists($var, $classVars)) {

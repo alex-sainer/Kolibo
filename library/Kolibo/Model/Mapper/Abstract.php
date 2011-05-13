@@ -27,7 +27,7 @@ abstract class Kolibo_Model_Mapper_Abstract
      * @var Klassenname des Models
      * @see Kolibo_Model_Abstract
      */
-    protected $_model = null;
+    protected $_modelClass = null;
 
     /**
      * Wenn nicht 'ID' muss der schlüssel auch angegeben werden
