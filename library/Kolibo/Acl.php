@@ -1,24 +1,30 @@
 <?php
 
+/**
+ * @author 		Akido
+ * @category 	Kolibo
+ * @package		Kolibo_Acl
+ * @version		$Id:$
+ */
 class Kolibo_Acl extends Zend_Acl
 {
 	//Array für alle Rollen
-	protected $_roles               = array();
+	protected $_roles = array();
 	
 	//Array für ressources
-	protected $_resources 		= array();
+	protected $_resources = array();
 	
 	//Array für privileges
-	protected $_privileges 		= array();
+	protected $_privileges	= array();
 	
 	//Array für ressources->privileges
-	protected $_ressPrivTree 	= array();
+	protected $_ressPrivTree = array();
 	
 	//hier wird das AclModel abgelegt
-	protected $_aclModel 		= null;
+	protected $_aclModel = null;
 
-        //Der Mapper für den Datenbankzugriff
-        protected $_roleMapper          = null;
+    //Der Mapper für den Datenbankzugriff
+    protected $_roleMapper = null;
 	
 	
 	
@@ -29,9 +35,8 @@ class Kolibo_Acl extends Zend_Acl
 	 */
 	public function __construct()
 	{
-		$this->_roleMapper = new Application_Model_Mapper_Acl();
-
-                $this->_aclModel = new AclModel();	//initialisert das Model
+		$this->_roleMapper	= new Application_Model_Mapper_Acl();
+		$this->_aclModel 	= new AclModel();	//initialisert das Model
 		$this->_loadRoles();                    //Lädt Rollen
 		$this->_loadRessources();		//Lädt Ressourcen (Modul_Controller)
 		$this->_loadPrivileges();		//Lädt Privileges (Action)
@@ -62,7 +67,8 @@ class Kolibo_Acl extends Zend_Acl
 	{
 		foreach($this->_aclModel->getRessources() AS $ressource){
 			$this->_ressources[$ressource->id] = $ressource->modul.'_'.$ressource->controller;
-			$this->add(new Zend_Acl_Ressource($ressource->modul.'_'.$ressource->controller));
+			require 'Zend/Acl/Resource.php';
+			$this->add(new Zend_Acl_Resource($ressource->modul.'_'.$ressource->controller));
 		}
 	}
 	

@@ -1,4 +1,13 @@
-Kolibo is a library to extending the Zend-Framework, written by Alex Sainer.
+Kolibo is just another library to extending the Zend-Framework, 
+written by Alex Sainer.
 
+Kolibo is currently used by the following Programs:
+- AS-CMS
+- AS-CRM
+- CallCenter
+- AET
+
+
+autor contact information:
 http://akido.name
 akido@live.de

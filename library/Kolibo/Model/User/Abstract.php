@@ -1,10 +1,17 @@
 <?php
 
+/**
+ * @author 		akido
+ * @category 	Kolibo
+ * @package 	Kolibo_Model_User
+ * @license
+ */
 class Kolibo_Model_User_Abstract {
 
 	public $username 	= 'guest';
 	public $role 		= 'guest';	
 	public $parent		= '';
+	public $session 	= null;
 	
 	/* Namensdaten */
 	public $salution;
